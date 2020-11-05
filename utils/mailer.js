@@ -28,7 +28,7 @@ module.exports.sendMail = (user, req, res) => {
     // One mail is sent, redirect to the purchased pet's page
     }).then(info => {
         console.log('Response: ', info);
-        res.redirect(`/pets/${req.params.id}`);
+        return res.redirect(`/pets/${req.params.id}`);
     // Catch error and redirect to the purchased pet's page
     }).catch(err => {
         console.log('Error: ', err);

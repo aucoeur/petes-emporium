@@ -112,7 +112,7 @@ module.exports = (app) => {
         };
         // Call our mail handler to manage sending emails
         mailer.sendMail(user, req, res);
-        res.redirect(`/pets/${req.params.id}`);
+        // res.redirect(`/pets/${req.params.id}`);
       })
       .catch(err => {
         console.log('Error: ', err);
