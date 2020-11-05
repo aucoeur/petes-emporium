@@ -13,10 +13,12 @@ const methodOverride = require('method-override')
 
 const app = express();
 
+
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/petes-pets', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 // view engine setup
@@ -33,6 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.locals.PUBLIC_STRIPE_API_KEY = process.env.PUBLIC_STRIPE_API_KEY
 
 require('./routes/index.js')(app);
 require('./routes/pets.js')(app);

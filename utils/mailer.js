@@ -17,7 +17,7 @@ const nodemailerMailgun = nodemailer.createTransport(mg(auth));
 module.exports.sendMail = (user, req, res) => {
     // send an email to the user's email with a provided template
     nodemailerMailgun.sendMail({
-        from: 'no-reply@example.com',
+        from: 'no-reply@mail.okayauco.net',
         to: user.email, // An array if you have multiple recipients.
         subject: 'Pet Purchased!',
         template: {
@@ -27,11 +27,11 @@ module.exports.sendMail = (user, req, res) => {
         }
     // One mail is sent, redirect to the purchased pet's page
     }).then(info => {
-        console.log('Response: ' + info);
+        console.log('Response: ', info);
         res.redirect(`/pets/${req.params.id}`);
     // Catch error and redirect to the purchased pet's page
     }).catch(err => {
-        console.log('Error: ' + err);
+        console.log('Error: ', err);
         res.redirect(`/pets/${req.params.id}`);
     });
 }
