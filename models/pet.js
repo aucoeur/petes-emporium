@@ -10,16 +10,16 @@ mongoosePaginate.paginate.options = {
 };
 
 const PetSchema = new Schema({
-    name            : { type: String, required: true }
-  , species         : { type: String }
-  , birthday        : { type: Date }
-  , picUrl          : { type: String }
-  , picUrlSq        : { type: String }
-  , favoriteFood    : { type: String }
-  , description     : { type: String }
-  , price           : {type: Number, required: true }
-},
-{
+  name: { type: String, required: true }
+  , birthday: {type: String }
+  , species: { type: String, required: true }
+  , picUrl: { type: String }
+  , picUrlSq: { type: String }
+  , avatarUrl: { type: String, required: true }
+  , favoriteFood: { type: String, required: true }
+  , description: { type: String, /*minlength: 50,*/ required: true }
+  , price: { type: Number, required:true },
+}, {
   timestamps: true
 });
 
