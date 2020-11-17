@@ -2,7 +2,7 @@ module.exports = [
     {
         "name": "Rex",
         "species": "Rottweiler",
-        "birthday": "20017-11-11",
+        "birthday": "2017-11-11",
         "favoriteFood": "Chicken",
         "picUrl": "http://www.dogbreedslist.info/uploads/allimg/dog-pictures/Rottweiler-3.jpg",
         "price": 99.99,
