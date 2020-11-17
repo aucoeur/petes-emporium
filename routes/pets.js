@@ -42,7 +42,7 @@ module.exports = (app) => {
   });
 
   // CREATE PET
-  app.post('/pets', upload.single('avatar'), (req, res, next) => {
+  app.post('/pets', upload.single('avatar'), (req, res) => {
     var pet = new Pet(req.body);
     pet.save(function (err) {
       if (req.file) {
@@ -67,11 +67,6 @@ module.exports = (app) => {
         res.send({ pet: pet });
       }
     })
-    // .then((pet) => {
-    //   res.redirect(`/pets/${pet._id}`);
-    // }).catch((err) => {
-    //   // Handle errors
-    // })
   })
   
   // SHOW PET
@@ -90,12 +85,16 @@ module.exports = (app) => {
 
   // UPDATE PET
   app.put('/pets/:id', (req, res) => {
-    Pet.findByIdAndUpdate(req.params.id, req.body)
-      .then((pet) => {
+    Pet.findByIdAndUpdate(
+      req.params.id, 
+      { $set: req.body }, 
+      { new: true },
+      function(err, pet) {
+        if (err) {
+          // STATUS OF 400 FOR VALIDATIONS
+          res.status(400).send(err);
+        }
         res.redirect(`/pets/${pet._id}`)
-      })
-      .catch((err) => {
-        // Handle Errors
       });
   });
 

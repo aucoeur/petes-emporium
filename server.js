@@ -13,7 +13,6 @@ const methodOverride = require('method-override')
 
 const app = express();
 
-
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/petes-pets', {
   // useNewUrlParser: true,
@@ -60,4 +59,5 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
+console.log('click. http://127.0.0.1:3000')
 module.exports = app;
